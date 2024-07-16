@@ -1,0 +1,62 @@
+body {
+  font-family: "Be Vietnam Pro", sans-serif !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+span,
+small,
+button {
+  font-family: "Be Vietnam Pro", sans-serif !important;
+}
+img,
+figure,
+a:has(img) {
+  width: auto;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  display: block !important;
+  margin: auto !important;
+}
+a:has(img) {
+  width: fit-content !important;
+}
+iframe {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+}
+a {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+.card {
+  cursor: pointer;
+}
+#back-to-top {
+  position: fixed;
+  border-radius: 5px;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  display: none;
+}
+#newsModalBody {
+  white-space: pre-line;
+}
+#newsModalBody :has(video),
+#newsModalBody :has(iframe),
+#newsModalBody video {
+  max-width: 100% !important;
+  height: auto;
+}
