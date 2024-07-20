@@ -27,8 +27,10 @@ function fetchRSS($url) {
             
             // Extract image URL if available
             $image_url = '/rss_noimg.png';
-            if (isset($item->enclosure['url'])) {
-                $image_url = (string) $item->enclosure['url'];
+            if (isset($item->enclosure)) {
+                $image_url = (string) $item->enclosure->attributes()->url;
+            } elseif ($item->children('media', true)->content) {
+                $image_url = (string) $item->children('media', true)->content->attributes()->url;
             } elseif (preg_match('/<img[^>]+src="([^">]+)"/i', $item->description, $matches)) {
                 $image_url = $matches[1];
             } elseif (preg_match('/<img[^>]+src=\'([^">]+)\'/i', $item->description, $matches)) {
