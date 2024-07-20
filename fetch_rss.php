@@ -31,6 +31,8 @@ function fetchRSS($url) {
                 $image_url = (string) $item->enclosure->attributes()->url;
             } elseif ($item->children('media', true)->content) {
                 $image_url = (string) $item->children('media', true)->content->attributes()->url;
+            } elseif ($item->children('media', true)->thumbnail) {
+                $image_url = (string) $item->children('media', true)->thumbnail->attributes()->url;
             } elseif (preg_match('/<img[^>]+src="([^">]+)"/i', $item->description, $matches)) {
                 $image_url = $matches[1];
             } elseif (preg_match('/<img[^>]+src=\'([^">]+)\'/i', $item->description, $matches)) {
