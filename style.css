@@ -14,7 +14,7 @@ small,
 button {
   font-family: "Be Vietnam Pro", sans-serif !important;
 }
-img,
+img:not(.card-img-top),
 figure,
 a:has(img) {
   width: auto;
