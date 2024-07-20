@@ -17,7 +17,7 @@ function fetchRSS($url) {
 
     if ($isRSS) {
         foreach ($rss->channel->item as $item) {
-            $content_encoded = htmlspecialchars($item->children('content', true)->encoded, ENT_QUOTES, 'UTF-8');
+            $content_encoded = (string) $item->children('content', true)->encoded;
             if (!$content_encoded) {
                 $content_encoded = $item->description;
             }
@@ -46,7 +46,7 @@ function fetchRSS($url) {
         }
     } elseif ($isAtom) {
         foreach ($rss->entry as $entry) {
-            $content_encoded = htmlspecialchars($entry->content, ENT_QUOTES, 'UTF-8');
+            $content_encoded = (string) $entry->content;
             $releaseDate = $entry->children('im', true)->releaseDate;
             if (!$releaseDate) {
                 $releaseDate = $entry->updated;
