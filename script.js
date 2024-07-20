@@ -50,7 +50,11 @@ function fetchRss(rssUrl, newsName) {
         newsContainer.append(`
           <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
             <div class="card" data-bs-toggle="modal" data-bs-target="#newsModal">
-              <img src="${item.image}" class="card-img-top" alt="${item.title}">
+              <div class="img-container">
+                <img src="${item.image}" class="card-img-top" alt="${
+          item.title
+        }">
+              </div>
               <div class="card-body">
                 <h5 class="card-title" title="${item.title}">${item.title}</h5>
                 <p class="card-text">${stripHTMLTags(descriptionWithoutImg)}</p>
