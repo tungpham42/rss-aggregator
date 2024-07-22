@@ -54,8 +54,8 @@ function fetchRSS($url) {
             $items[] = [
                 'title' => (string) html_entity_decode(removeCdataTags($item->title)),
                 'link'  => (string) $item->link,
-                'description' => (string) html_entity_decode(removeCdataTags($item->description)),
-                'content' => (string) html_entity_decode(removeCdataTags($content_encoded)),
+                'description' => (string) html_entity_decode(removeCdataTags(htmlspecialchars($item->description))),
+                'content' => (string) html_entity_decode(removeCdataTags(htmlspecialchars($content_encoded))),
                 'pubDate' => (string) $item->pubDate,
                 'image' => $image_url,
             ];
@@ -82,9 +82,9 @@ function fetchRSS($url) {
 
             $items[] = [
                 'title' => (string) html_entity_decode(removeCdataTags($entry->title)),
-                'link'  => (string) $entry->link['href'],
-                'description' => (string) html_entity_decode(removeCdataTags($entry->summary)),
-                'content' => (string) html_entity_decode(removeCdataTags($content_encoded)),
+                'link'  => (string) $entry->link->attributes()->href,
+                'description' => (string) html_entity_decode(removeCdataTags(htmlspecialchars($entry->summary))),
+                'content' => (string) html_entity_decode(removeCdataTags(htmlspecialchars($content_encoded))),
                 'pubDate' => (string) $releaseDate,
                 'image' => $image_url,
             ];
